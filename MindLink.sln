@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindLink", "MindLink\MindLink.csproj", "{C5E28E2E-1C0D-46AD-B431-06FF8ECB3FD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindLinkCore", "MindLinkCore\MindLinkCore.csproj", "{8AC5432C-6B9D-4450-A16D-2EE0E1E1B132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindLinkData", "MindLinkData\MindLinkData.csproj", "{B350F31D-5B9A-4791-91A3-77F3BDB478C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp", "SocialApp\SocialApp.csproj", "{8C275A3B-6459-4225-B502-639B4F784943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{C5E28E2E-1C0D-46AD-B431-06FF8ECB3FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E28E2E-1C0D-46AD-B431-06FF8ECB3FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5E28E2E-1C0D-46AD-B431-06FF8ECB3FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC5432C-6B9D-4450-A16D-2EE0E1E1B132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC5432C-6B9D-4450-A16D-2EE0E1E1B132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC5432C-6B9D-4450-A16D-2EE0E1E1B132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC5432C-6B9D-4450-A16D-2EE0E1E1B132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B350F31D-5B9A-4791-91A3-77F3BDB478C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B350F31D-5B9A-4791-91A3-77F3BDB478C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B350F31D-5B9A-4791-91A3-77F3BDB478C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B350F31D-5B9A-4791-91A3-77F3BDB478C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C275A3B-6459-4225-B502-639B4F784943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C275A3B-6459-4225-B502-639B4F784943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C275A3B-6459-4225-B502-639B4F784943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C275A3B-6459-4225-B502-639B4F784943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
