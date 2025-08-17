@@ -11,6 +11,12 @@ function App() {
   const [commentsByPost, setCommentsByPost] = useState({});
   const [commentInputs, setCommentInputs] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
+  const [savedPosts, setSavedPosts] = useState({});
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
+  const [notificationType, setNotificationType] = useState('');
+  const [activeMessageCategory, setActiveMessageCategory] = useState('primary');
+
 
   const openChat = (contactName) => {
     if (!openChats.includes(contactName)) {
@@ -111,6 +117,35 @@ function App() {
     }));
   };
 
+  const toggleSaved = (postId) => {
+    const isCurrentlySaved = savedPosts[postId];
+    setSavedPosts((prev) => ({
+      ...prev,
+      [postId]: !prev[postId]
+    }));
+    
+    // Show notification
+    setNotificationMessage(isCurrentlySaved ? 'Post removed from saved' : 'Post saved successfully!');
+    setNotificationType(isCurrentlySaved ? 'info' : 'success');
+    setShowNotification(true);
+    
+    // Simulate haptic feedback (vibration) if supported
+    if (navigator.vibrate) {
+      navigator.vibrate(isCurrentlySaved ? [50] : [100, 50, 100]);
+    }
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
+  };
+
+  const handleMessageCategoryChange = (category) => {
+    setActiveMessageCategory(category);
+  };
+
+
+
   return (
     <div className="App">
       {/* Navigation */}
@@ -147,7 +182,7 @@ function App() {
           {/* Left Sidebar */}
           <div className="left">
             {/* Profile */}
-            <a href="#" className="profile">
+            <div className="profile">
               <div className="profile-photo">
                 <img src="/logo192.png" alt="Profile" />
               </div>
@@ -155,7 +190,7 @@ function App() {
                 <h4>Joy is dead</h4>
                 <p className="text-muted">@joyzy</p>
               </div>
-            </a>
+            </div>
 
             {/* Sidebar Menu */}
             <div className="sidebar">
@@ -228,10 +263,12 @@ function App() {
                 </span>
                 <h3>Messages</h3>
               </a>
-              <a className="menu-item">
-                <span><i className="uil uil-bookmark"></i></span>
-                <h3>Saved</h3>
-              </a>
+                              <a className="menu-item">
+                  <span>
+                    <i className="uil uil-bookmark"></i>
+                  </span>
+                  <h3>Saved</h3>
+                </a>
               <a className="menu-item">
                 <span><i className="uil uil-chart-line"></i></span>
                 <h3>Analytics</h3>
@@ -246,9 +283,6 @@ function App() {
               </a>
             </div>
             {/* End Sidebar */}
-
-            {/* Create Post Button */}
-             <button className="btn btn-primary" onClick={() => setShowCreatePost(true)}>Create Post</button>
           </div>
           {/* End Left Sidebar */}
 
@@ -330,9 +364,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-1'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-1')}
+                      title={savedPosts['post-1'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-1'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                                     <p>
+                     Liked by <b>Joy is crazy</b> and{' '}
+                     <span>
+                       <b>999 others</b>
+                     </span>
+                   </p>
                 </div>
 
                 <div className="caption">
@@ -378,9 +427,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-2'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-2')}
+                      title={savedPosts['post-2'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-2'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -426,9 +490,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-3'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-3')}
+                      title={savedPosts['post-3'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-3'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -474,9 +553,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-4'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-4')}
+                      title={savedPosts['post-4'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-4'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -522,9 +616,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-5'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-5')}
+                      title={savedPosts['post-5'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-5'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -569,10 +678,25 @@ function App() {
                     <span className="comment-btn" onClick={() => openComments('post-6')}><i className="uil uil-comment-dots"></i></span>
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
-                  <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                                    <div className="bookmark">
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-6'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-6')}
+                      title={savedPosts['post-6'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-6'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -618,9 +742,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                   </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-7'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-7')}
+                      title={savedPosts['post-7'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-7'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -666,9 +805,24 @@ function App() {
                     <span className="share-btn"><i className="uil uil-share-alt"></i></span>
                 </div>
                   <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    <span 
+                      className={`bookmark-btn ${savedPosts['post-8'] ? 'saved' : ''}`} 
+                      onClick={() => toggleSaved('post-8')}
+                      title={savedPosts['post-8'] ? 'Remove from saved' : 'Save post'}
+                    >
+                      {savedPosts['post-8'] ? (
+                        <i className="uil uil-bookmark-full"></i>
+                      ) : (
+                        <i className="uil uil-bookmark"></i>
+                      )}
+                    </span>
                   </div>
-                  <p>Liked by <b>Joy is crazy</b> and <b>999 others</b></p>
+                  <p>
+                    Liked by <b>Joy is crazy</b> and{' '}
+                    <span>
+                      <b>999 others</b>
+                    </span>
+                  </p>
                 </div>
 
                 <div className="caption">
@@ -700,15 +854,34 @@ function App() {
 
               {/* Message Categories */}
               <div className="category">
-                <h6 className="active">Primary</h6>
-                <h6>General</h6>
-                <h6 className="message-requests">Requests (7)</h6>
+                <h6 
+                  className={activeMessageCategory === 'primary' ? 'active' : ''} 
+                  onClick={() => handleMessageCategoryChange('primary')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Primary
+                </h6>
+                <h6 
+                  className={activeMessageCategory === 'general' ? 'active' : ''} 
+                  onClick={() => handleMessageCategoryChange('general')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  General
+                </h6>
+                <h6 
+                  className={`message-requests ${activeMessageCategory === 'requests' ? 'active' : ''}`} 
+                  onClick={() => handleMessageCategoryChange('requests')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Requests (7)
+                </h6>
               </div>
 
               {/* MESSAGE */}
               <div className="message" onClick={() => openChat("Joya joy")}>
                 <div className="profile-photo">
                   <img src="/logo192.png" alt="User photo" />
+                  <div className="active-indicator"></div>
                 </div>
                 <div className="message-body">
                   <h5>Joya joy</h5>
@@ -719,6 +892,7 @@ function App() {
               <div className="message" onClick={() => openChat("Joya joy")}>
                 <div className="profile-photo">
                   <img src="/logo192.png" alt="User photo" />
+                  <div className="active-indicator"></div>
                 </div>
                 <div className="message-body">
                   <h5>Joya joy</h5>
@@ -729,6 +903,7 @@ function App() {
               <div className="message" onClick={() => openChat("Joya joy")}>
                 <div className="profile-photo">
                   <img src="/logo192.png" alt="User photo" />
+                  <div className="active-indicator"></div>
                 </div>
                 <div className="message-body">
                   <h5>Joya joy</h5>
@@ -739,6 +914,7 @@ function App() {
               <div className="message" onClick={() => openChat("Joya joy")}>
                 <div className="profile-photo">
                   <img src="/logo192.png" alt="User photo" />
+                  <div className="active-indicator"></div>
                 </div>
                 <div className="message-body">
                   <h5>Joya joy</h5>
@@ -749,6 +925,7 @@ function App() {
               <div className="message" onClick={() => openChat("Joya joy")}>
                 <div className="profile-photo">
                   <img src="/logo192.png" alt="User photo" />
+                  <div className="active-indicator"></div>
                 </div>
                 <div className="message-body">
                   <h5>Joya joy</h5>
@@ -962,13 +1139,14 @@ function App() {
       {/* Mini Chat Windows */}
       {openChats.map((contactName) => (
         <div key={contactName} className="mini-chat-window">
-          <div className="mini-chat-header">
-            <div className="mini-chat-contact">
-              <div className="profile-photo">
-                <img src="/logo192.png" alt="Contact" />
+                      <div className="mini-chat-header">
+              <div className="mini-chat-contact">
+                <div className="profile-photo">
+                  <img src="/logo192.png" alt="Contact" />
+                  <div className="active-indicator"></div>
+                </div>
+                <h5>{contactName}</h5>
               </div>
-              <h5>{contactName}</h5>
-            </div>
             <button 
               className="mini-chat-close" 
               onClick={() => closeChat(contactName)}
@@ -1027,6 +1205,7 @@ function App() {
               <div key={idx} className={`mini-comment-item ${c.author === 'You' ? 'mine' : ''}`}>
                 <div className="mini-comment-avatar">
                   <img src="/logo192.png" alt={c.author} />
+                  {c.author !== 'You' && <div className="active-indicator"></div>}
                 </div>
                 <div className="mini-comment-body">
                   <div className="mini-comment-meta">
@@ -1126,6 +1305,15 @@ function App() {
           </div>
         </div>
       )}
+
+              
+
+        {/* Notification System */}
+        {showNotification && (
+          <div className={`notification ${notificationType}`}>
+            {notificationMessage}
+          </div>
+        )}
     </div>
   );
 }
