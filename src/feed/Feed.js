@@ -351,19 +351,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-1'] ? 'liked' : ''}`} onClick={() => toggleLike('post-1')}>
-                      {likedPosts['post-1'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-1')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-1'] ? 'liked' : ''}`} onClick={() => toggleLike('post-1')}>
+                        {likedPosts['post-1'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-1')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-1'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-1')}
@@ -414,19 +414,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-2'] ? 'liked' : ''}`} onClick={() => toggleLike('post-2')}>
-                      {likedPosts['post-2'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-2')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-2'] ? 'liked' : ''}`} onClick={() => toggleLike('post-2')}>
+                        {likedPosts['post-2'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-2')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-2'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-2')}
@@ -477,19 +477,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-3'] ? 'liked' : ''}`} onClick={() => toggleLike('post-3')}>
-                      {likedPosts['post-3'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-3')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-3'] ? 'liked' : ''}`} onClick={() => toggleLike('post-3')}>
+                        {likedPosts['post-3'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-3')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-3'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-3')}
@@ -540,19 +540,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-4'] ? 'liked' : ''}`} onClick={() => toggleLike('post-4')}>
-                      {likedPosts['post-4'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-4')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-4'] ? 'liked' : ''}`} onClick={() => toggleLike('post-4')}>
+                        {likedPosts['post-4'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-4')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-4'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-4')}
@@ -603,19 +603,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-5'] ? 'liked' : ''}`} onClick={() => toggleLike('post-5')}>
-                      {likedPosts['post-5'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-5')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-5'] ? 'liked' : ''}`} onClick={() => toggleLike('post-5')}>
+                        {likedPosts['post-5'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-5')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-5'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-5')}
@@ -666,19 +666,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-6'] ? 'liked' : ''}`} onClick={() => toggleLike('post-6')}>
-                      {likedPosts['post-6'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-6')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                                    <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-6'] ? 'liked' : ''}`} onClick={() => toggleLike('post-6')}>
+                        {likedPosts['post-6'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-6')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-6'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-6')}
@@ -729,19 +729,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-7'] ? 'liked' : ''}`} onClick={() => toggleLike('post-7')}>
-                      {likedPosts['post-7'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-7')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                  </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-7'] ? 'liked' : ''}`} onClick={() => toggleLike('post-7')}>
+                        {likedPosts['post-7'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-7')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-7'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-7')}
@@ -792,19 +792,19 @@ function App() {
 
                 <div className="action-button">
                   <div className="interaction-buttons">
-                    <span className={`like-btn ${likedPosts['post-8'] ? 'liked' : ''}`} onClick={() => toggleLike('post-8')}>
-                      {likedPosts['post-8'] ? (
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                          <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                      ) : (
-                        <i className="uil uil-heart"></i>
-                      )}
-                    </span>
-                    <span className="comment-btn" onClick={() => openComments('post-8')}><i className="uil uil-comment-dots"></i></span>
-                    <span className="share-btn"><i className="uil uil-share-alt"></i></span>
-                </div>
-                  <div className="bookmark">
+                    <div className="left-buttons">
+                      <span className={`like-btn ${likedPosts['post-8'] ? 'liked' : ''}`} onClick={() => toggleLike('post-8')}>
+                        {likedPosts['post-8'] ? (
+                          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.01 4.22 2.56C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          </svg>
+                        ) : (
+                          <i className="uil uil-heart"></i>
+                        )}
+                      </span>
+                      <span className="comment-btn" onClick={() => openComments('post-8')}><i className="uil uil-comment-dots"></i></span>
+                      <span className="share-btn"><i className="uil uil-share-alt"></i></span>
+                    </div>
                     <span 
                       className={`bookmark-btn ${savedPosts['post-8'] ? 'saved' : ''}`} 
                       onClick={() => toggleSaved('post-8')}
@@ -1137,8 +1137,15 @@ function App() {
       </main>
 
       {/* Mini Chat Windows */}
-      {openChats.map((contactName) => (
-        <div key={contactName} className="mini-chat-window">
+      {openChats.map((contactName, index) => (
+        <div 
+          key={contactName} 
+          className="mini-chat-window"
+          style={{
+            right: `${1 + (index * 0.5)}rem`,
+            bottom: `${1 + (index * 0.5)}rem`
+          }}
+        >
                       <div className="mini-chat-header">
               <div className="mini-chat-contact">
                 <div className="profile-photo">
