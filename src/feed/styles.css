@@ -465,10 +465,15 @@ main .container .left .profile {
 
 .middle .feed .action-button .interaction-buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.4rem;
   margin: 0.6rem;
+}
+
+.interaction-buttons .left-buttons {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -518,7 +523,7 @@ main .container .left .profile {
 }
 
 /* Bookmark button styling */
-.bookmark .bookmark-btn {
+.bookmark-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -531,24 +536,24 @@ main .container .left .profile {
   overflow: hidden;
 }
 
-.bookmark .bookmark-btn:hover {
+.bookmark-btn:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   background: rgba(0, 0, 0, 0.05);
 }
 
-.bookmark .bookmark-btn:active {
+.bookmark-btn:active {
   transform: translateY(0) scale(0.95);
 }
 
-.bookmark .bookmark-btn i {
+.bookmark-btn i {
   font-size: 1.4rem;
   transition: all 0.3s ease;
   color: var(--color-slate-blue);
 }
 
 /* Tooltip effect */
-.bookmark .bookmark-btn::after {
+.bookmark-btn::after {
   content: attr(title);
   position: absolute;
   bottom: 100%;
@@ -567,25 +572,25 @@ main .container .left .profile {
   pointer-events: none;
 }
 
-.bookmark .bookmark-btn:hover::after {
+.bookmark-btn:hover::after {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(-12px);
 }
 
 /* Saved state styling */
-.bookmark .bookmark-btn.saved {
+.bookmark-btn.saved {
   background: linear-gradient(135deg, var(--color-blush), var(--color-blush-pink));
   box-shadow: 0 0 20px rgba(220, 65, 189, 0.4);
 }
 
-.bookmark .bookmark-btn.saved:hover {
+.bookmark-btn.saved:hover {
   background: linear-gradient(135deg, var(--color-blush), var(--color-soft-pink));
   box-shadow: 0 4px 20px rgba(170, 80, 163, 0.6);
   transform: translateY(-3px) scale(1.1);
 }
 
-.bookmark .bookmark-btn.saved i {
+.bookmark-btn.saved i {
   color: var(--color-blush-pink);
   text-shadow: 0 0 8px rgba(245, 132, 216, 0.5);
   animation: bookmarkPulse 0.6s ease-out;
@@ -605,14 +610,14 @@ main .container .left .profile {
 }
 
 /* Unsaved state hover effect */
-.bookmark .bookmark-btn:not(.saved):hover i {
+.bookmark-btn:not(.saved):hover i {
   color: var(--color-blush-pink);
   text-shadow: 0 0 10px rgba(246, 190, 244, 0.6);
   transform: scale(1.1);
 }
 
 /* Ripple effect on click */
-.bookmark .bookmark-btn::before {
+.bookmark-btn::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -625,21 +630,21 @@ main .container .left .profile {
   transition: width 0.6s, height 0.6s;
 }
 
-.bookmark .bookmark-btn:active::before {
+.bookmark-btn:active::before {
   width: 3rem;
   height: 3rem;
 }
 
 /* Icon transition effects */
-.bookmark .bookmark-btn i {
+.bookmark-btn i {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.bookmark .bookmark-btn:hover i {
+.bookmark-btn:hover i {
   transform: rotate(5deg);
 }
 
-.bookmark .bookmark-btn.saved i {
+.bookmark-btn.saved i {
   animation: bookmarkSaved 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -659,12 +664,12 @@ main .container .left .profile {
 }
 
 /* Loading state for bookmark button */
-.bookmark .bookmark-btn.loading {
+.bookmark-btn.loading {
   pointer-events: none;
   opacity: 0.7;
 }
 
-.bookmark .bookmark-btn.loading i {
+.bookmark-btn.loading i {
   animation: bookmarkLoading 1s infinite linear;
 }
 
@@ -678,7 +683,7 @@ main .container .left .profile {
 }
 
 /* Micro-interaction: bounce effect on state change */
-.bookmark .bookmark-btn.state-change {
+.bookmark-btn.state-change {
   animation: bookmarkBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -1044,9 +1049,6 @@ main .container .right {
 
 .mini-chat-window {
   position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
   width: 250px;
   height: 300px;
   background: var(--color-soft-blue);
