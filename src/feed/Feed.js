@@ -16,7 +16,77 @@ function App() {
   const [notificationMessage, setNotificationMessage] = useState('');
   const [notificationType, setNotificationType] = useState('');
   const [activeMessageCategory, setActiveMessageCategory] = useState('primary');
+  const [showLikersModal, setShowLikersModal] = useState(false);
+  const [currentPostLikers, setCurrentPostLikers] = useState([]);
+  const [expandedComments, setExpandedComments] = useState({});
 
+  // Mock data for likers
+  const likersData = {
+    'post-1': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Alice Johnson', avatar: '/logo192.png' },
+      { name: 'Bob Smith', avatar: '/logo192.png' },
+      { name: 'Carol Davis', avatar: '/logo192.png' },
+      { name: 'David Wilson', avatar: '/logo192.png' },
+      { name: 'Emma Brown', avatar: '/logo192.png' },
+      { name: 'Frank Miller', avatar: '/logo192.png' },
+      { name: 'Grace Lee', avatar: '/logo192.png' },
+      { name: 'Henry Taylor', avatar: '/logo192.png' },
+      { name: 'Ivy Chen', avatar: '/logo192.png' }
+    ],
+    'post-2': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Jack Wilson', avatar: '/logo192.png' },
+      { name: 'Kate Brown', avatar: '/logo192.png' },
+      { name: 'Liam Davis', avatar: '/logo192.png' }
+    ],
+    'post-3': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Maya Patel', avatar: '/logo192.png' },
+      { name: 'Noah Singh', avatar: '/logo192.png' }
+    ],
+    'post-4': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Olivia Kim', avatar: '/logo192.png' },
+      { name: 'Paul Rodriguez', avatar: '/logo192.png' },
+      { name: 'Quinn Martinez', avatar: '/logo192.png' },
+      { name: 'Rachel Green', avatar: '/logo192.png' }
+    ],
+    'post-5': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Sam Thompson', avatar: '/logo192.png' }
+    ],
+    'post-6': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Tina Wang', avatar: '/logo192.png' },
+      { name: 'Uma Sharma', avatar: '/logo192.png' },
+      { name: 'Victor Lopez', avatar: '/logo192.png' },
+      { name: 'Wendy Zhang', avatar: '/logo192.png' },
+      { name: 'Xavier Liu', avatar: '/logo192.png' }
+    ],
+    'post-7': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Yara Ahmed', avatar: '/logo192.png' },
+      { name: 'Zoe Johnson', avatar: '/logo192.png' }
+    ],
+    'post-8': [
+      { name: 'Joy is crazy', avatar: '/logo192.png' },
+      { name: 'Alex Turner', avatar: '/logo192.png' },
+      { name: 'Bella Swift', avatar: '/logo192.png' },
+      { name: 'Charlie Brown', avatar: '/logo192.png' },
+      { name: 'Diana Prince', avatar: '/logo192.png' }
+    ]
+  };
+
+  const showLikers = (postId) => {
+    setCurrentPostLikers(likersData[postId] || []);
+    setShowLikersModal(true);
+  };
+
+  const closeLikersModal = () => {
+    setShowLikersModal(false);
+    setCurrentPostLikers([]);
+  };
 
   const openChat = (contactName) => {
     if (!openChats.includes(contactName)) {
@@ -82,15 +152,21 @@ function App() {
   };
 
   const openComments = (postId) => {
-    if (!openCommentWindows.includes(postId)) {
-      setOpenCommentWindows([...openCommentWindows, postId]);
-    }
+    // Toggle expanded comments instead of opening popup
+    setExpandedComments({
+      ...expandedComments,
+      [postId]: !expandedComments[postId]
+    });
+    
+    // Initialize comments if not already done
     if (!commentsByPost[postId]) {
       setCommentsByPost({
         ...commentsByPost,
         [postId]: [
           { text: 'Nice post!', author: 'Alice', time: '1m' },
-          { text: 'Love this!', author: 'Bob', time: '3m' }
+          { text: 'Love this!', author: 'Bob', time: '3m' },
+          { text: 'Amazing content!', author: 'Charlie', time: '5m' },
+          { text: 'Thanks for sharing!', author: 'Diana', time: '7m' }
         ]
       });
     }
@@ -378,7 +454,10 @@ function App() {
                   </div>
                                      <p>
                      Liked by <b>Joy is crazy</b> and{' '}
-                     <span>
+                     <span 
+                       style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                       onClick={() => showLikers('post-1')}
+                     >
                        <b>999 others</b>
                      </span>
                    </p>
@@ -388,7 +467,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-1')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-1')}>
+                    <span className="text-muted">
+                      {expandedComments['post-1'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-1'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-1'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-1'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-1']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-1', commentInputs['post-1'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-1', commentInputs['post-1'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 2 */}
@@ -441,7 +566,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-2')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -451,7 +579,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-2')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-2')}>
+                    <span className="text-muted">
+                      {expandedComments['post-2'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-2'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-2'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-2'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-2']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-2', commentInputs['post-2'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-2', commentInputs['post-2'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 3*/}
@@ -504,7 +678,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-3')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -514,7 +691,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-3')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-3')}>
+                    <span className="text-muted">
+                      {expandedComments['post-3'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-3'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-3'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-3'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-3']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-3', commentInputs['post-3'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-3', commentInputs['post-3'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 4 */}
@@ -567,7 +790,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-4')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -577,7 +803,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-4')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-4')}>
+                    <span className="text-muted">
+                      {expandedComments['post-4'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-4'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-4'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-4'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-4']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-4', commentInputs['post-4'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-4', commentInputs['post-4'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 5 */}
@@ -630,7 +902,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-5')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -640,7 +915,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-5')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-5')}>
+                    <span className="text-muted">
+                      {expandedComments['post-5'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-5'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-5'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-5'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-5']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-5', commentInputs['post-5'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-5', commentInputs['post-5'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 6 */}
@@ -693,7 +1014,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-6')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -703,7 +1027,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-6')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-6')}>
+                    <span className="text-muted">
+                      {expandedComments['post-6'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-6'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-6'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-6'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-6']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-6', commentInputs['post-6'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-6', commentInputs['post-6'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 7 */}
@@ -756,7 +1126,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-7')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -766,7 +1139,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-7')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-7')}>
+                    <span className="text-muted">
+                      {expandedComments['post-7'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-7'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-7'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-7'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-7']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-7', commentInputs['post-7'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-7', commentInputs['post-7'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* POST 8 */}
@@ -819,7 +1238,10 @@ function App() {
                   </div>
                   <p>
                     Liked by <b>Joy is crazy</b> and{' '}
-                    <span>
+                    <span 
+                      style={{ cursor: 'pointer', color: 'var(--color-aqua-teal)' }}
+                      onClick={() => showLikers('post-8')}
+                    >
                       <b>999 others</b>
                     </span>
                   </p>
@@ -829,7 +1251,53 @@ function App() {
                   <p><b>Joya Hoyzy</b> Hello I am getting crazy. <span className="harsh-tag">#Joyiscrazy</span></p>
                 </div>
 
-                <div className="comments text-muted" onClick={() => openComments('post-8')}>View all 99 comments</div>
+                <div className="comments-section">
+                  <div className="comments-toggle" onClick={() => openComments('post-8')}>
+                    <span className="text-muted">
+                      {expandedComments['post-8'] ? 'Hide comments' : 'View all 99 comments'}
+                    </span>
+                  </div>
+                  
+                  {expandedComments['post-8'] && (
+                    <div className="inline-comments">
+                      <div className="comments-list">
+                        {(commentsByPost['post-8'] || []).map((comment, idx) => (
+                          <div key={idx} className="comment-item">
+                            <div className="comment-avatar">
+                              <img src="/logo192.png" alt={comment.author} />
+                            </div>
+                            <div className="comment-content">
+                              <div className="comment-header">
+                                <span className="comment-author">{comment.author}</span>
+                                <span className="comment-time">{comment.time}</span>
+                              </div>
+                              <p className="comment-text">{comment.text}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="comment-input-section">
+                        <div className="comment-input">
+                          <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            value={commentInputs['post-8'] || ''}
+                            onChange={(e) => setCommentInputs({ ...commentInputs, ['post-8']: e.target.value })}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') addComment('post-8', commentInputs['post-8'] || '');
+                            }}
+                          />
+                          <button 
+                            className="comment-submit-btn"
+                            onClick={() => addComment('post-8', commentInputs['post-8'] || '')}
+                          >
+                            <i className="uil uil-message"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* END OF FEED */}
@@ -1313,7 +1781,37 @@ function App() {
         </div>
       )}
 
-              
+      {/* Likers Modal */}
+      {showLikersModal && (
+        <div className="likers-modal">
+          <div className="modal-overlay" onClick={closeLikersModal}></div>
+          <div className="modal-content">
+            <div className="modal-header">
+              <h3>Liked by</h3>
+              <button 
+                className="modal-close" 
+                onClick={closeLikersModal}
+              >
+                <i className="uil uil-times"></i>
+              </button>
+            </div>
+            <div className="likers-list">
+              {currentPostLikers.map((liker, index) => (
+                <div key={index} className="liker-item">
+                  <div className="liker-avatar">
+                    <img src={liker.avatar} alt={liker.name} />
+                  </div>
+                  <div className="liker-info">
+                    <h4>{liker.name}</h4>
+                    <p>@{liker.name.toLowerCase().replace(/\s+/g, '')}</p>
+                  </div>
+                  <button className="follow-btn">Follow</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
         {/* Notification System */}
         {showNotification && (

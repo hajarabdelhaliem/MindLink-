@@ -1328,6 +1328,269 @@ main .container .right {
   scrollbar-color: var(--color-aqua-teal) var(--color-soft-blue);
 }
 
+/*========================== INLINE COMMENTS ==========================*/
+
+.comments-section {
+  margin-top: 0.5rem;
+}
+
+.comments-toggle {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+}
+
+.comments-toggle:hover {
+  color: var(--color-aqua-teal);
+}
+
+.inline-comments {
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-navy-blue);
+  padding-top: 1rem;
+}
+
+.comments-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.comment-item {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: background 0.2s ease;
+}
+
+.comment-item:hover {
+  background: var(--color-warm-beige);
+}
+
+.comment-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.comment-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: var(--color-slate-blue);
+  font-size: 0.9rem;
+}
+
+.comment-time {
+  color: var(--color-navy-blue);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.comment-text {
+  margin: 0;
+  color: var(--color-slate-blue);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.comment-input-section {
+  border-top: 1px solid var(--color-navy-blue);
+  padding-top: 1rem;
+}
+
+.comment-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.comment-input input {
+  flex: 1;
+  border: 1px solid var(--color-navy-blue);
+  border-radius: 1.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  background: var(--color-off-white);
+  color: var(--color-slate-blue);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.comment-input input:focus {
+  border-color: var(--color-aqua-teal);
+}
+
+.comment-input input::placeholder {
+  color: var(--color-navy-blue);
+  opacity: 0.7;
+}
+
+.comment-submit-btn {
+  background: var(--color-aqua-teal);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.comment-submit-btn:hover {
+  background: var(--color-navy-green);
+  transform: translateY(-1px);
+}
+
+.comment-submit-btn i {
+  font-size: 1rem;
+}
+
+/*========================== LIKERS MODAL ==========================*/
+
+.likers-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likers-modal .modal-content {
+  position: relative;
+  background: var(--color-off-white);
+  border-radius: var(--card-border-radius);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+.likers-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-navy-blue);
+}
+
+.likers-modal .modal-header h3 {
+  margin: 0;
+  color: var(--color-slate-blue);
+  font-size: 1.2rem;
+}
+
+.likers-modal .modal-close {
+  background: none;
+  border: none;
+  color: var(--color-slate-blue);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.likers-modal .modal-close:hover {
+  background: var(--color-soft-blue);
+}
+
+.likers-list {
+  padding: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.liker-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  transition: background 0.2s ease;
+}
+
+.liker-item:hover {
+  background: var(--color-soft-blue);
+}
+
+.liker-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-aqua-teal);
+}
+
+.liker-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.liker-info {
+  flex: 1;
+}
+
+.liker-info h4 {
+  margin: 0 0 0.2rem 0;
+  color: var(--color-slate-blue);
+  font-size: 1rem;
+}
+
+.liker-info p {
+  margin: 0;
+  color: var(--color-navy-blue);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.follow-btn {
+  background: var(--color-aqua-teal);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.follow-btn:hover {
+  background: var(--color-navy-green);
+  transform: translateY(-1px);
+}
+
 /*========================== CREATE POST MODAL ==========================*/
 
 .create-post-modal {
