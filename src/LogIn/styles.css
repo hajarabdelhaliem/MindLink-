@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Varela+Round&display=swap");
 
 :root {
   --color-off-white: hsl(45, 60%, 91%);   /* #FBF3D5 */
@@ -69,40 +69,47 @@ body {
 }
 
 .main-welcome-text {
-  font-size: 4.5em; /* Slightly larger for more emphasis */
+  font-size: 4.5em; /* Adjusted font size */
   font-weight: 700;
   margin-bottom: 10px;
   line-height: 1.1; /* Adjust line height for better spacing */
   color: transparent; /* Make original text transparent */
-  -webkit-text-stroke: 1.5px white; /* White outline for Webkit browsers */
-  text-stroke: 1.5px white; /* Standard property for outline */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-image: linear-gradient(to right, var(--color-soft-blue), var(--color-light-blue)); /* Blue gradient */
+  -webkit-text-stroke: 0.8px white; /* Thinner white outline */
+  text-stroke: 0.8px white; /* Standard property for outline, thinner */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-image: linear-gradient(to right, var(--color-slate-blue), var(--color-aqua-teal)); /* Still vibrant blue gradient */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: 'Varela Round', sans-serif; /* Bubbly font */
 }
 
 .mindlink-text {
-  font-size: 1.3em; /* Slightly larger and more emphasized */
+  font-size: 1.2em; /* Adjusted font size */
   color: transparent; /* Make original text transparent */
-  -webkit-text-stroke: 1.5px white; /* White outline for Webkit browsers */
-  text-stroke: 1.5px white; /* Standard property for outline */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  background-image: linear-gradient(to right, var(--color-blush-pink), var(--color-light-pink)); /* Pink gradient */
+  -webkit-text-stroke: 0.8px white; /* Thinner white outline */
+  text-stroke: 0.8px white; /* Standard property for outline, thinner */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-image: linear-gradient(to right, var(--color-dark-pink), var(--color-peach)); /* More vibrant pink gradient */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: 'Varela Round', sans-serif; /* Bubbly font */
 }
 
 .sub-welcome-text {
-  font-size: 1.8em; /* Slightly larger for better readability */
-  font-weight: 500;
+  font-size: 1.7em; /* Adjusted font size */
+  font-weight: 600; /* Slightly bolder */
   margin-top: 5px; /* Reduced gap to bring it closer to the title */
   color: transparent; /* Make original text transparent */
-  -webkit-text-stroke: 1px white; /* White outline for Webkit browsers */
-  text-stroke: 1px white; /* Standard property for outline */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+  -webkit-text-stroke: 0.5px white; /* Very thin white outline */
+  text-stroke: 0.5px white; /* Standard property for outline, very thin */
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+  background-image: linear-gradient(to right, var(--color-navy-purple), var(--color-soft-pink)); /* A distinct gradient for the slogan */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Varela Round', sans-serif; /* Bubbly font */
 }
 
 body::before {
