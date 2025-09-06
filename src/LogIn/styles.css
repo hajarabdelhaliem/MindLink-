@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --color-off-white: hsl(45, 60%, 91%);   /* #FBF3D5 */
+  --color-navy-blue: hsl(191, 12%, 64%);  /* #9CAFAA */
+  --color-navy-purple: hsl(285, 24%, 76%);/* #C5B0CD */
+  --color-light-blue: hsl(189, 41%, 74%); /* #9ECAD6 */
+  --color-light-pink: hsl(0, 100%, 94%);  /* #FFEAEA */
+  --color-dark-pink: hsl(0, 54%, 86%);    /* #F5CBCB */
+  --color-navy-green: hsl(176, 28%, 60%); /* #78B9B5 */
+  --color-light-yellow: hsl(62, 100%, 86%); /* #FDFFB8 */
+  --color-opal: hsl(155, 100%, 90%);      /* #CFFFE2 */
+  --color-slate-blue: hsl(235, 17%, 40%); /* #555879 */
+  --color-warm-beige: hsl(34, 25%, 84%); /* #DED3C4 */
+  --color-soft-pink: hsl(0, 100%, 91%); /* #FFD8D8 */
+  --color-lighter-pink: hsl(323, 91%, 95%); /* #FEEBF6 */
+  --color-soft-blue: hsl(190, 24%, 82%); /* #C7D9DD */
+  --color-blush: hsl(348, 68%, 88%);   /* #F7CFD8 */
+  --color-pale-lime: hsl(67, 68%, 90%);   /* #F4F8D3 */
+  --color-aqua-teal: hsl(180, 41%, 62%);   /* #73C7C7 */
+  --color-peach: hsl(19, 100%, 85%);   /* #FFCDB2 */
+  --color-blush-pink: hsl(339, 100%, 95%);   /* #FFEDF3 */
+  --color-pale-olive: hsl(65, 56%, 86%);   /* #ECEFCA */
+  --color-light-gray: hsl(0, 0%, 96%);   /* #F6F6F6 */
+  --color-mint: hsl(162, 34%, 74%);   /* #A2D5C6 */
+
+
+
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 0.6rem 2rem;
+  --search-padding: 0.6rem 1rem;
+  --card-padding: 1rem;
+
+
+  --sticky-top-left: 5.4rem;
+  --sticky-top-right: 5.4rem;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: linear-gradient(to right, var(--color-soft-blue), var(--color-blush-pink));
+  position: relative; /* Added for pseudo-element positioning */
+  overflow: hidden; /* Hide overflow from floating elements */
+}
+
+.login-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  gap: 80px; /* Increased space between text and container */
+}
+
+.welcome-text-section {
+  text-align: right; /* Align text to the right for placement to the left of the container */
+  color: var(--color-slate-blue);
+  padding-right: 20px;
+}
+
+.main-welcome-text {
+  font-size: 4.5em; /* Slightly larger for more emphasis */
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.1; /* Adjust line height for better spacing */
+  color: transparent; /* Make original text transparent */
+  -webkit-text-stroke: 1.5px white; /* White outline for Webkit browsers */
+  text-stroke: 1.5px white; /* Standard property for outline */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-image: linear-gradient(to right, var(--color-soft-blue), var(--color-light-blue)); /* Blue gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mindlink-text {
+  font-size: 1.3em; /* Slightly larger and more emphasized */
+  color: transparent; /* Make original text transparent */
+  -webkit-text-stroke: 1.5px white; /* White outline for Webkit browsers */
+  text-stroke: 1.5px white; /* Standard property for outline */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-image: linear-gradient(to right, var(--color-blush-pink), var(--color-light-pink)); /* Pink gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub-welcome-text {
+  font-size: 1.8em; /* Slightly larger for better readability */
+  font-weight: 500;
+  margin-top: 5px; /* Reduced gap to bring it closer to the title */
+  color: transparent; /* Make original text transparent */
+  -webkit-text-stroke: 1px white; /* White outline for Webkit browsers */
+  text-stroke: 1px white; /* Standard property for outline */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><text x='40' y='80' style='font-size:50px; fill: rgba(255, 237, 243, 0.2); stroke: rgba(255, 204, 221, 0.4); stroke-width: 0.3px;'>🍬</text><text x='450' y='180' style='font-size:45px; fill: rgba(199, 217, 221, 0.2); stroke: rgba(160, 190, 196, 0.4); stroke-width: 0.3px;'>🍭</text><text x='200' y='400' style='font-size:48px; fill: rgba(255, 237, 243, 0.2); stroke: rgba(255, 204, 221, 0.4); stroke-width: 0.3px;'>🎀</text><text x='550' y='600' style='font-size:45px; fill: rgba(199, 217, 221, 0.2); stroke: rgba(160, 190, 196, 0.4); stroke-width: 0.3px;'>😊</text><text x='300' y='750' style='font-size:50px; fill: rgba(255, 237, 243, 0.2); stroke: rgba(255, 204, 221, 0.4); stroke-width: 0.3px;'>🌸</text><text x='80' y='650' style='font-size:42px; fill: rgba(199, 217, 221, 0.2); stroke: rgba(160, 190, 196, 0.4); stroke-width: 0.3px;'>✨</text></svg>");
+  background-repeat: repeat;
+  background-size: 800px 800px; /* Decreased size for more repeats */
+  animation: floatEmojis 15s infinite linear; /* Faster animation */
+  z-index: -1;
+}
+
+@keyframes floatEmojis {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* margin: 0 auto; */
+  /* margin-top: 200px; */
+  width: 600px;
+  background-color: var(--color-off-white); /* Base background color */
+  /* background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><text x='20' y='50' style='font-size:45px; fill: rgba(255, 237, 243, 0.3); stroke: rgba(255, 204, 221, 0.5); stroke-width: 0.5px;'>🍬</text><text x='350' y='120' style='font-size:40px; fill: rgba(199, 217, 221, 0.3); stroke: rgba(160, 190, 196, 0.5); stroke-width: 0.5px;'>🍭</text><text x='150' y='280' style='font-size:42px; fill: rgba(255, 237, 243, 0.3); stroke: rgba(255, 204, 221, 0.5); stroke-width: 0.5px;'>🎀</text><text x='450' y='380' style='font-size:40px; fill: rgba(199, 217, 221, 0.3); stroke: rgba(160, 190, 196, 0.5); stroke-width: 0.5px;'>😊</text><text x='250' y='500' style='font-size:45px; fill: rgba(255, 237, 243, 0.3); stroke: rgba(255, 204, 221, 0.5); stroke-width: 0.5px;'>🌸</text><text x='80' y='400' style='font-size:38px; fill: rgba(199, 217, 221, 0.3); stroke: rgba(160, 190, 196, 0.5); stroke-width: 0.5px;'>✨</text></svg>"); */
+  background-repeat: repeat; /* Make emojis repeat */
+  background-size: 800px 800px; /* Increased size for fewer repeats */
+  animation: floatEmojis 15s infinite linear;
+  padding: 30px;
+  border-radius: 20px; /* For softer edges */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* For a subtle lift */
+  /* position: absolute; */ /* Added for absolute positioning */
+  /* top: 50%; */ /* Position from top */
+  /* left: 50%; */ /* Position from left */
+  /* transform: translate(-50%, -50%); */ /* Centering trick */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.text {
+  color: var(--color-slate-blue);
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.underline {
+  width: 61px;
+  height: 6px;
+  background: var(--color-slate-blue);
+  border-radius: 9px;
+}
+
+.inputs {
+  margin-bottom: 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 80px;
+  background: var(--color-soft-blue);
+  border-radius: 20px;
+  padding: 0 24px;
+  gap: 12px;
+  margin: auto; /* Center the input */
+}
+
+.input img {
+  margin: 0px 30px;
+}
+
+.input i {
+  font-size: 28px; /* Increased font size for icons */
+  color: var(--color-slate-blue); /* Optional: consistent color for icons */
+  margin: 0 15px;
+}
+
+.input input {
+  height: 50px;
+  width: 400px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--color-slate-blue);
+}
+
+.forgot-password {
+  padding-left: 70px;
+  margin-top: 0px; /* Adjusted to move it higher */
+  color: var(--color-slate-blue);
+}
+
+.forgot-password span{
+  color: var(--color-navy-blue);
+  gap: 15px;
+  margin: 60px auto;
+  cursor: pointer; /* Added for clickable cursor */
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  gap: 30px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 59px;
+  color: var(--color-off-white); /* Light text for active button */
+  background: var(--color-navy-blue); /* Darker background for active button */
+  border-radius: 50px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gray {
+  background: var(--color-soft-blue); /* Lighter background for inactive button */
+  color: var(--color-slate-blue); /* Darker text for inactive button */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+
+.modal-overlay.visible {
+  opacity: 1; /* Visible when active */
+}
+
+.modal-content {
+  background: var(--color-warm-beige);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+  color: var(--color-slate-blue);
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-soft-blue);
+  border-radius: 10px;
+  font-size: 16px;
+  color: var(--color-slate-blue); /* Input text color */
+  background: var(--color-soft-blue); /* Input box background */
+}
+
+.modal-content button {
+  background: var(--color-navy-blue);
+  color: var(--color-off-white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.modal-content button:hover {
+  opacity: 0.9;
+}
+
+.modal-content button:disabled {
+  background: var(--color-light-blue);
+  cursor: not-allowed;
+}
